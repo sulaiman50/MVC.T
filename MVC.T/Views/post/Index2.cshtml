@@ -1,0 +1,95 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<MoviesProject.Entities.Movie>
+
+
+@{
+    ViewBag.Title = "Sulaiman";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>sulaiman</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Publish_date
+        </th>
+        <th>
+            Created
+        </th>
+        <th>
+            Director_Id
+        </th>
+        <th>
+            Rating_Id
+        </th>
+        <th>
+            isDeleted
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publish_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isDeleted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+
+        //@Html.DropDownList("Items", (IEnumerable<SelectListItem>)ViewBag.Item, "Select a movie"
+
+    }
+
+    <div class="row">
+
+
+
+    </div>
+
+</table>
+
+<p>Page num:</p>
+
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) 
+
+
+<p>Form</p>
+@Model.PageCount
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index2", new { page }))
+
+    

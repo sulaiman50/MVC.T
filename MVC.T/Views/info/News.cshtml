@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MVC.T.Models.news>
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News</h2>
+
+<p>
+    @Html.ActionLink("Create And Insert", "Create")
+</p>
+<table class="table-responsive" style="border : 2px solid gray ">
+    <tr>
+        <th style="border:2px solid gray">
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th style="border:2px solid gray ">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th style="border:2px solid gray ">
+            @Html.DisplayNameFor(model => model.details)
+        </th>
+        <th style="border:2px solid gray ">
+            @Html.DisplayNameFor(model => model.newsDate)
+        </th>
+        <th></th>
+    </tr>
+
+   
+
+
+    @foreach (var item in Model)
+    {
+        <tr style="border:2px solid gray ">
+            <td style="border:2px solid gray ">
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td style="border:2px solid gray ">
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td style="border:2px solid gray ">
+                @Html.DisplayFor(modelItem => item.details)
+            </td>
+            <td style="border:2px solid gray ">
+                @Html.DisplayFor(modelItem => item.newsDate)
+            </td>
+            <td style="border:2px solid gray ">
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
